@@ -43,7 +43,7 @@ import fabric_jumpstart as jumpstart
 jumpstart._install_from_github(
     logical_id="capacity-consumption",
     repo_url="https://github.com/jdocampo/fabric-capacity-consumption-jumpstart.git",
-    repo_ref="main",
+    repo_ref="v0.1.0",
     entry_point="nb_0100_get_started.Notebook",
     items_in_scope=["Lakehouse", "Notebook", "DataPipeline"],
     workspace_path="workspace/",
