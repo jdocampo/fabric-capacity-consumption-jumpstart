@@ -1,0 +1,49 @@
+find_replace:
+  # Notebook default Lakehouse binding: replace source Lakehouse ID with the deployed Lakehouse ID.
+  - find_value: \#\s*META\s+"default_lakehouse":\s*"([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"
+    replace_value:
+      _ALL_: "$items.Lakehouse.capacity_metrics.$id"
+    is_regex: "true"
+    item_type: "Notebook"
+
+  # Notebook default Lakehouse workspace binding: replace source workspace ID with target workspace ID.
+  - find_value: \#\s*META\s+"default_lakehouse_workspace_id":\s*"([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"
+    replace_value:
+      _ALL_: "$workspace.$id"
+    is_regex: "true"
+    item_type: "Notebook"
+
+  # Notebook known_lakehouses entries.
+  - find_value: 7f45a2ed-125b-448d-bf75-2a9613526182
+    replace_value:
+      _ALL_: "$items.Lakehouse.capacity_metrics.$id"
+    item_type: "Notebook"
+
+  # Data Pipeline activity notebook references.
+  - find_value: ba720494-084c-4028-aa3d-e885afe019fc
+    replace_value:
+      _ALL_: "$items.Notebook.nb_0210_collect_capacity_metrics.$id"
+    item_type: "DataPipeline"
+    item_name: ["pl_0100_orchestrate_capacity_consumption"]
+  - find_value: 9faf04aa-f2f7-4557-bdca-7dd864899d62
+    replace_value:
+      _ALL_: "$items.Notebook.nb_0220_collect_timepoint_detail.$id"
+    item_type: "DataPipeline"
+    item_name: ["pl_0100_orchestrate_capacity_consumption"]
+  - find_value: e0c90c57-1f57-4f03-a643-e5fca3b1bbf7
+    replace_value:
+      _ALL_: "$items.Notebook.nb_0240_collect_autoscale_timepoint_detail.$id"
+    item_type: "DataPipeline"
+    item_name: ["pl_0100_orchestrate_capacity_consumption"]
+  - find_value: 939b9456-024d-4ae4-9d5b-0582496a0bfb
+    replace_value:
+      _ALL_: "$items.Notebook.nb_0300_generate_gold_tables.$id"
+    item_type: "DataPipeline"
+    item_name: ["pl_0100_orchestrate_capacity_consumption"]
+
+  # Data Pipeline activity workspace references.
+  - find_value: cb2325c3-50bc-40bf-91c8-49effb0200d8
+    replace_value:
+      _ALL_: "$workspace.$id"
+    item_type: "DataPipeline"
+    item_name: ["pl_0100_orchestrate_capacity_consumption"]

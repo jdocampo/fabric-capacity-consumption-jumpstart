@@ -1,0 +1,171 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Run_0200_CollectCapacityMetrics",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "ba720494-084c-4028-aa3d-e885afe019fc",
+          "workspaceId": "cb2325c3-50bc-40bf-91c8-49effb0200d8",
+          "parameters": {
+            "start_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.start_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "end_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.end_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "Run_0220_CollectCapacityMetricsTimepointDetail",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Run_0200_CollectCapacityMetrics",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "9faf04aa-f2f7-4557-bdca-7dd864899d62",
+          "workspaceId": "cb2325c3-50bc-40bf-91c8-49effb0200d8",
+          "parameters": {
+            "start_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.start_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "end_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.end_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "parallel_threads": {
+              "value": {
+                "value": "@pipeline().parameters.parallel_threads",
+                "type": "Expression"
+              },
+              "type": "int"
+            }
+          }
+        }
+      },
+      {
+        "name": "Run_0230_CollectAutoscaleDetail",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Run_0200_CollectCapacityMetrics",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "e0c90c57-1f57-4f03-a643-e5fca3b1bbf7",
+          "workspaceId": "cb2325c3-50bc-40bf-91c8-49effb0200d8",
+          "parameters": {
+            "start_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.start_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "end_date_str": {
+              "value": {
+                "value": "@pipeline().parameters.end_date_str",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "parallel_threads": {
+              "value": {
+                "value": "@pipeline().parameters.parallel_threads",
+                "type": "Expression"
+              },
+              "type": "int"
+            }
+          }
+        }
+      },
+      {
+        "name": "Run_0300_GenerateGoldTables_Final",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Run_0220_CollectCapacityMetricsTimepointDetail",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Run_0230_CollectAutoscaleDetail",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "939b9456-024d-4ae4-9d5b-0582496a0bfb",
+          "workspaceId": "cb2325c3-50bc-40bf-91c8-49effb0200d8"
+        }
+      }
+    ],
+    "concurrency": 10,
+    "parameters": {
+      "start_date_str": {
+        "type": "string",
+        "defaultValue": "19 June 2026 00:00"
+      },
+      "end_date_str": {
+        "type": "string",
+        "defaultValue": "19 June 2026 11:59"
+      },
+      "parallel_threads": {
+        "type": "int",
+        "defaultValue": 10
+      }
+    }
+  }
+}
+
