@@ -30,7 +30,8 @@
 #     </tr>
 #   </table>
 # </div>
-#
+# 
+# 
 # ## Purpose
 #
 # This jumpstart installs a small Fabric data engineering solution that reads Microsoft Fabric Capacity Metrics data from an existing **Fabric Capacity Metrics semantic model**, stores raw extracts in a Lakehouse silver layer, and creates curated gold tables for downstream analysis.
@@ -124,5 +125,4 @@
 # CELL ********************
 
 print("Capacity Consumption jumpstart installed. Review shared_config, then run orchestrate_capacity_consumption.")
-
 
