@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "capacity_metrics"
+    "type": "Notebook",
+    "displayName": "generate_gold_tables"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "capacity_metrics_lid"
+    "logicalId": "generate_gold_tables_lid"
   }
 }

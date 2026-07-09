@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "capacity_metrics"
+    "type": "Notebook",
+    "displayName": "analyze_cu_consumption_patterns"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "capacity_metrics_lid"
+    "logicalId": "analyze_cu_consumption_patterns_lid"
   }
 }

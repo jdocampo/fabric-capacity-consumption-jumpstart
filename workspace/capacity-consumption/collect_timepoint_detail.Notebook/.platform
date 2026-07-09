@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "capacity_metrics"
+    "type": "Notebook",
+    "displayName": "collect_timepoint_detail",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "capacity_metrics_lid"
+    "logicalId": "collect_timepoint_detail_lid"
   }
 }

@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "capacity_metrics"
+    "type": "Notebook",
+    "displayName": "get_started",
+    "description": "Entry point for the Capacity Consumption jumpstart."
   },
   "config": {
     "version": "2.0",
-    "logicalId": "capacity_metrics_lid"
+    "logicalId": "get_started_lid"
   }
 }
